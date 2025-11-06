@@ -1,0 +1,2 @@
+# GALERIA
+VAL_AMOR
