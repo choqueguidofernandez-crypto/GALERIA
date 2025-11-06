@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensaje para Val</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    @media (max-width: 600px) {
+      .gif { width: 250px; margin-bottom: 15px; }
+      .mensaje { font-size: 28px; padding: 10px 20px; }
+      .estrella { width: 3px !important; height: 3px !important; }
+      .tarjeta { width: 90%; padding: 20px; }
+      .albumRedonda { width: 180px; height: 180px; }
+    }
+    
+.miniCarrusel {
+  width: 100%;
+  max-width: 280px;
+  overflow: hidden;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff69b4;
+}
+
+.miniSlides {
+  display: flex;
+  width: 400%;
+  animation: deslizarMini 12s infinite;
+}
+
+.miniSlides img {
+  width: 25%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 2px;
+}
+
+@keyframes deslizarMini {
+  0% { transform: translateX(0%); }
+  25% { transform: translateX(-25%); }
+  50% { transform: translateX(-50%); }
+  75% { transform: translateX(-75%); }
+  100% { transform: translateX(0%); }
+}
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gif {
+      width: 400px;
+      height: auto;
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+
+    .mensaje {
+      font-family: 'Pacifico', cursive;
+      font-size: 40px;
+      color: #ffffff;
+      cursor: pointer;
+      text-align: center;
+      animation: brillar 1.5s infinite alternate, parpadeoTexto 2s infinite;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #ff69b4,
+        0 0 30px #ff69b4,
+        0 0 40px #ff1493;
+      z-index: 1;
+    }
+
+    @keyframes brillar {
+      from {
+        text-shadow:
+          0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 15px #fff,
+          0 0 20px #ff69b4,
+          0 0 30px #ff69b4,
+          0 0 40px #ff1493;
+      }
+      to {
+        text-shadow:
+          0 0 10px #fff,
+          0 0 20px #fff,
+          0 0 30px #fff,
+          0 0 40px #ff69b4,
+          0 0 50px #ff69b4,
+          0 0 60px #ff1493;
+      }
+    }
+
+    @keyframes parpadeoTexto {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .mensaje:hover {
+      transform: scale(1.05);
+    }
+
+    .estrellas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .estrella {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: caer 6s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(-10vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .tarjeta {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #fff;
+      border-radius: 20px;
+      padding: 20px;
+      color: #fff;
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px #fff;
+      z-index: 999;
+      display: none;
+      width: 90%;
+      max-width: 400px;
+      height: 420px;
+      overflow: hidden;
+    }
+
+    .contenidoTarjeta {
+      max-height: 100%;
+      overflow-y: auto;
+      padding-right: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #ff69b4 #ffffff10;
+    }
+
+    .contenidoTarjeta::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .contenidoTarjeta::-webkit-scrollbar-thumb {
+      background-color: #ff69b4;
+      border-radius: 10px;
+    }
+
+    .reproductor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: aparecer 1s ease-in-out;
+    }
+
+    .albumRedonda {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px #ff69b4;
+      margin-bottom: 15px;
+      animation: latido 1.5s infinite;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .reproductor audio {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 10px;
+      background-color: rgba(255,255,255,0.1);
+      box-shadow: 0 0 10px #fff;
+      outline: none;
+    }
+
+   
+  </style>
+</head>
+<body>
+  <div class="estrellas" id="estrellas"></div>
+
+  <audio id="musicaFondo" loop>
+    <source src="1.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <img src="2.gif" alt="GIF animado" class="gif">
+  <div class="mensaje" onclick="mostrarTarjeta()">Click aquí mi amor Val :)</div>
+
+  <div class="tarjeta" id="tarjeta"></div>
+
+  <script>
+    const contenedor = document.getElementById('estrellas');
+    const cantidad = 500;
+    const audio = document.getElementById('musicaFondo');
+    const tarjeta = document.getElementById('tarjeta');
+
+    for (let i = 0; i < cantidad; i++) {
+      const estrella = document.createElement('div');
+      estrella.classList.add('estrella');
+      estrella.style.left = Math.random() * 100 + '%';
+      estrella.style.top = '-10px';
+
+      const tamaño = Math.random();
+      estrella.style.width = tamaño < 0.85 ? '3px' : tamaño < 0.98 ? '6px' : '10px';
+      estrella.style.height = estrella.style.width;
+      estrella.style.animationDuration = (5 + Math.random() * 3) + 's';
+      estrella.style.animationDelay = Math.random() * 5 + 's';
+
+      contenedor.appendChild(estrella);
+    }
+
+    const iniciarMusica = () => {
+      audio.play().catch(() => {});
+      document.removeEventListener('click', iniciarMusica);
+      document.removeEventListener('touchstart', iniciarMusica);
+    };
+    document.addEventListener('click', iniciarMusica);
+    document.addEventListener('touchstart', iniciarMusica);
+
+   function mostrarTarjeta() {
+  tarjeta.style.display = 'block';
+  audio.pause();
+  tarjeta.innerHTML = `
+    <div class="contenidoTarjeta">
+      <div class="reproductor">
+        <h3>Para ti, Val 💖 nuestra Galeria Amors</h3>
+        <img src="2.jpg" alt="Portada del álbum" class="albumRedonda">
+        <audio controls autoplay>
+          <source src="2.mpeg" type="audio/mpeg">
+          Tu navegador no soporta audio HTML5.
+        </audio>
+        
+        <div class="miniCarrusel">
+          <div class="miniSlides">
+            <img src="10.jpeg" alt="Foto 1">
+            <img src="11.jpeg" alt="Foto 1">
+            <img src="12.jpeg" alt="Foto 1">
+            <img src="13.jpeg" alt="Foto 1">
+            <img src="14.jpeg" alt="Foto 2">
+            <img src="15.jpeg" alt="Foto 3">
+            <img src="16.jpeg" alt="Foto 4">
+            <img src="17.jpeg" alt="Foto 4">
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+  </script>
+</body>
+</html>
